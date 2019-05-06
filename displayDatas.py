@@ -1,33 +1,43 @@
-#coding:utf-8
+# coding:utf-8
 
 import json
 
 import tkinter
 
+
 def valider():
-    
+
     for datas in json.load(open("datas/datas.json")):
-        if champ1.get() == datas["id"] and datas["mdp"] == champ2.get():
-            fenetre.destroy()
+        if champId.get() == datas["id"] and datas["mdp"] == champMdp.get():
+            fenetreFormulaire.destroy()
             fenetreFiche = tkinter.Tk()
             fenetreFiche.title(datas["id"])
-            labelFiche = tkinter.Label(text="Prénom : {}\nNom de famille : {}\nAge : {}\nMot de passe : {}\nNuméro de téléphone : {}\nEmail : {}".format(datas["name"], datas["surname"], datas["age"], datas["mdp"], datas["phone"], datas["email"]))
+            labelFiche = tkinter.Label(
+                text="Prénom : {}\nNom de famille : {}\nAge : {}\nMot de passe : {}\nNuméro de téléphone : {}\nEmail : {}".format(
+                    datas["name"],
+                    datas["surname"],
+                    datas["age"],
+                    datas["mdp"],
+                    datas["phone"],
+                    datas["email"],
+                )
+            )
             labelFiche.pack()
             fenetreFiche.mainloop()
         else:
-            pass    
+            pass
 
 
-fenetre = tkinter.Tk()
-fenetre.title("")
-label1 = tkinter.Label(fenetre, text="Identifiant : ")
-label2 = tkinter.Label(fenetre, text="Mot de passe : ")
-champ1 = tkinter.Entry(fenetre)
-champ2 = tkinter.Entry(fenetre)
-bouton = tkinter.Button(fenetre, text="Valider", command=valider)
-label1.grid(row=0, column=0)
-label2.grid(row=1, column=0)
-champ1.grid(row=0, column=1)
-champ2.grid(row=1, column=1)
-bouton.grid(row=0, column=3, rowspan=2)
-fenetre.mainloop()
+fenetreFormulaire = tkinter.Tk()
+fenetreFormulaire.title("")
+labelId = tkinter.Label(fenetreFormulaire, text="Identifiant : ")
+labelMdp = tkinter.Label(fenetreFormulaire, text="Mot de passe : ")
+champId = tkinter.Entry(fenetreFormulaire)
+champMdp = tkinter.Entry(fenetreFormulaire, show="*")
+boutonValider = tkinter.Button(fenetreFormulaire, text="Valider", command=valider)
+labelId.grid(row=0, column=0)
+labelMdp.grid(row=1, column=0)
+champId.grid(row=0, column=1)
+champMdp.grid(row=1, column=1)
+boutonValider.grid(row=0, column=3, rowspan=2)
+fenetreFormulaire.mainloop()
