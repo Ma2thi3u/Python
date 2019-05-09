@@ -23,11 +23,10 @@ def valider():
             
             fenetreFiche = tkinter.Tk()
             fenetreFiche.title(datas["id"])
+            
             labelFiche = tkinter.Label(text=fiche)
             labelFiche.pack()
             fenetreFiche.mainloop()
-        else:
-            pass
 
 # Créer la fenetre du formulaire
 fenetreFormulaire = tkinter.Tk()
@@ -40,13 +39,19 @@ frame = tkinter.Frame(fenetreFormulaire, bg="#cef1d3")
 fenetreFormulaire.geometry("720x480")
 fenetreFormulaire.config(background="#cef1d3")
 
-labelId = tkinter.Label(frame, text="Identifiant : ", bg="#cef1d3").grid(column=0, row=0, pady=10)
-champId = tkinter.Entry(frame, bg="#cef1d3").grid(column=1, row=0, pady=10)
+labelId = tkinter.Label(frame, text="Identifiant : ", bg="#cef1d3")
+champId = tkinter.Entry(frame, bg="#cef1d3")
 
-labelMdp = tkinter.Label(frame, text="Mot de passe : ", bg="#cef1d3").grid(column=0, row=1, pady=10)
-champMdp = tkinter.Entry(frame, show="*", bg="#cef1d3").grid(column=1, row=1, pady=10)
+labelMdp = tkinter.Label(frame, text="Mot de passe : ", bg="#cef1d3")
+champMdp = tkinter.Entry(frame, show="*", bg="#cef1d3")
 
 boutonValider = tkinter.Button(fenetreFormulaire, text="Valider", highlightbackground="#a8cbfa", height=5, command=valider)
+
+# Afficher les elements
+labelId.grid(column=0, row=0, pady=10)
+champId.grid(column=1, row=0, pady=10)
+labelMdp.grid(column=0, row=1, pady=10)
+champMdp.grid(column=1, row=1, pady=10)
 
 frame.pack(expand="YES")
 boutonValider.pack(fill=tkinter.X)
