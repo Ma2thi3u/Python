@@ -12,33 +12,53 @@ def valider():
         
         if champId.get() == datas["id"] and datas["mdp"] == champMdp.get():
             
-            fiche = ("Prénom : " + datas["name"] + "\n" 
-                     + "Nom de famille : " + datas["surname"] + "\n" 
-                     + "Age : " + str(datas["age"]) + "\n"
-                     + "Mot de passe : " + datas["mdp"] + "\n"
-                     + "Numéro de téléphone : " + datas["phone"] + "\n"
-                     + "Email : " + datas["email"])
+            fichePrenom = "Prénom : " + datas["name"]
+            ficheNom = "Nom de famille : " + datas["surname"]
+            ficheAge = "Age : " + str(datas["age"])
+            ficheMdp = "Mot de passe : " + datas["mdp"]
+            fichePhone = "Numéro de téléphone : " + datas["phone"]
+            ficheEmail = "Email : " + datas["email"]
             
             fenetreFormulaire.destroy()
             
             fenetreFiche = tkinter.Tk()
             fenetreFiche.title(datas["id"])
             
-            labelFiche = tkinter.Label(text=fiche)
-            labelFiche.pack()
+            frameFiche = tkinter.Frame(fenetreFiche, bg="#cef1d3")
+            
+            fenetreFiche.geometry("720x480")
+            fenetreFiche.config(background="#cef1d3")
+            
+            labelFichePrenom = tkinter.Label(frameFiche, text=fichePrenom, bd=1, relief="solid", bg="#97DCA1")
+            labelFicheNom = tkinter.Label(frameFiche, text=ficheNom, bd=1, relief="solid", bg="#97DCA1")
+            labelFicheAge = tkinter.Label(frameFiche, text=ficheAge, bd=1, relief="solid", bg="#97DCA1")
+            labelFicheMdp = tkinter.Label(frameFiche, text=ficheMdp, bd=1, relief="solid", bg="#97DCA1")
+            labelFichePhone = tkinter.Label(frameFiche, text=fichePhone, bd=1, relief="solid", bg="#97DCA1")
+            labelFicheEmail = tkinter.Label(frameFiche, text=ficheEmail, bd=1, relief="solid", bg="#97DCA1")
+            
+            labelFichePrenom.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            labelFicheNom.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            labelFicheAge.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            labelFicheMdp.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            labelFichePhone.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            labelFicheEmail.pack(fill=tkinter.X, pady=10, ipady=10, ipadx=10)
+            
+            frameFiche.pack(expand="YES")
+            
             fenetreFiche.mainloop()
 
-# Créer la fenetre du formulaire
+# Create the tkinter window
 fenetreFormulaire = tkinter.Tk()
 fenetreFormulaire.title("")
 
-# Creer une frame
+# Create a frame
 frame = tkinter.Frame(fenetreFormulaire, bg="#cef1d3")
 
-# Personnaliser la fenetre
+# Customize the window
 fenetreFormulaire.geometry("720x480")
 fenetreFormulaire.config(background="#cef1d3")
 
+# Create the elements of the window (label, entry and button)
 labelId = tkinter.Label(frame, text="Identifiant : ", bg="#cef1d3")
 champId = tkinter.Entry(frame, bg="#cef1d3")
 
@@ -47,7 +67,7 @@ champMdp = tkinter.Entry(frame, show="*", bg="#cef1d3")
 
 boutonValider = tkinter.Button(fenetreFormulaire, text="Valider", highlightbackground="#a8cbfa", height=5, command=valider)
 
-# Afficher les elements
+# Display the elements of the window (label, entry and button)
 labelId.grid(column=0, row=0, pady=10)
 champId.grid(column=1, row=0, pady=10)
 labelMdp.grid(column=0, row=1, pady=10)
@@ -56,4 +76,5 @@ champMdp.grid(column=1, row=1, pady=10)
 frame.pack(expand="YES")
 boutonValider.pack(fill=tkinter.X)
 
+# Display the window
 fenetreFormulaire.mainloop()
